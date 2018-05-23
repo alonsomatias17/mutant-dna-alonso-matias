@@ -10,21 +10,21 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest()
-public class mutantIdentificationServiceTest {
+public class MutantIdentificationServiceTest {
 
     @Autowired
-    private mutantIdentificationService mutantIdentificationService;
+    private MutantIdentificationService MutantIdentificationService;
 
     @Test
     public void isMutantTest(){
-        String[] dna = null;
-        boolean response = mutantIdentificationService.isMutant(dna);
+        String[] dna = new String[6];
+        boolean response = MutantIdentificationService.isMutant(dna);
         Assert.assertTrue(response);
     }
 
     @Test(expected = InvalidDataException.class)
     public void isMutantBadInputException(){
-        String[] dna = new String[mutantIdentificationService.DNA_SECUENCE_LENGHT-1];
-        mutantIdentificationService.isMutant(dna);
+        String[] dna = new String[MutantIdentificationService.DNA_SEQUENCE_LENGTH -1];
+        MutantIdentificationService.isMutant(dna);
     }
 }
