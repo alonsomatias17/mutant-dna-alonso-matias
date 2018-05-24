@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 @RunWith(SpringRunner.class)
@@ -20,18 +19,18 @@ public class MatrixTransformerServiceTest {
     @Test
     public void arrayToMatrixConverter2Test(){
         String[] dna = this.sampleArray();
-        String[][] resultMatrix = matrixTransformerService.arrayToMatrixConverter2(dna);
+        String[][] resultMatrix = matrixTransformerService.arrayToMatrixConverter(dna);
         String[][] expectedMatrix = this.sampleMatrix();
         Assert.assertTrue(Arrays.deepEquals(resultMatrix, expectedMatrix));
     }
 
     private String[][] sampleMatrix() {
         String[][] dnaMatrix  = {{"A","T","G","C","G","A"},
-                {"C","A","G","T","G","C"},
-                {"T","T","A","T","G","T"},
-                {"A","G","A","A","G","G"},
-                {"C","C","C","C","T","A"},
-                {"T","C","A","C","T","G"}};
+                                {"C","A","G","T","G","C"},
+                                {"T","T","A","T","G","T"},
+                                {"A","G","A","A","G","G"},
+                                {"C","C","C","C","T","A"},
+                                {"T","C","A","C","T","G"}};
         return dnaMatrix;
     }
 

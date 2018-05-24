@@ -13,18 +13,23 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class MutantIdentificationServiceTest {
 
     @Autowired
-    private MutantIdentificationService MutantIdentificationService;
+    private MutantIdentificationService mutantIdentificationService;
 
     @Test
     public void isMutantTest(){
-        String[] dna = new String[6];
-        boolean response = MutantIdentificationService.isMutant(dna);
+        String[] dna = this.sampleArray();
+        boolean response = mutantIdentificationService.isMutant(dna);
         Assert.assertTrue(response);
     }
 
     @Test(expected = InvalidDataException.class)
     public void isMutantBadInputException(){
         String[] dna = new String[MutantIdentificationService.DNA_SEQUENCE_LENGTH -1];
-        MutantIdentificationService.isMutant(dna);
+        mutantIdentificationService.isMutant(dna);
+    }
+
+    private String[] sampleArray() {
+        String[] dna = {"ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"};
+        return dna;
     }
 }
