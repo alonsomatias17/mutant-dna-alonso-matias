@@ -1,6 +1,7 @@
 package com.mercadolibre.mutantes.service;
 
 import com.mercadolibre.mutantes.exception.InvalidDataException;
+import com.mercadolibre.mutantes.validator.MatrixFormatValidator;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,7 +32,7 @@ public class MutantIdentificationServiceTest {
 
     @Test(expected = InvalidDataException.class)
     public void isMutantInvalidSizeException(){
-        String[] dna = new String[MutantIdentificationService.DNA_SEQUENCE_LENGTH -1];
+        String[] dna = new String[MatrixFormatValidator.DNA_SEQUENCE_LENGTH -1];
         mutantIdentificationService.isMutant(dna);
     }
 

@@ -1,7 +1,5 @@
 package com.mercadolibre.mutantes.search;
 
-import com.mercadolibre.mutantes.validator.MatrixFormatValidator;
-
 import static com.mercadolibre.mutantes.service.MutantIdentificationService.DNA_SEQUENCE_LENGTH;
 
 public abstract class SearchMutantDNA {
@@ -9,7 +7,6 @@ public abstract class SearchMutantDNA {
     public boolean search(String[][] dnaMatrix, int r, int c) {
         int i=1;
         boolean containsMutantDNA = true;
-        MatrixFormatValidator.verifyData(dnaMatrix[r][c]);
         while (i< DNA_SEQUENCE_LENGTH && containsMutantDNA){
             if(searchCondition(dnaMatrix, r, c, i))
                 containsMutantDNA=false;

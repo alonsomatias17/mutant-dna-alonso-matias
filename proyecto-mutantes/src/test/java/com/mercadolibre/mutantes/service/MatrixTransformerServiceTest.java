@@ -17,7 +17,7 @@ public class MatrixTransformerServiceTest {
     private MatrixTransformerService matrixTransformerService;
 
     @Test
-    public void arrayToMatrixConverter2Test(){
+    public void arrayToMatrixConverterTest(){
         String[] dna = this.sampleArray();
         String[][] resultMatrix = matrixTransformerService.arrayToMatrixConverter(dna);
         String[][] expectedMatrix = this.sampleMatrix();
