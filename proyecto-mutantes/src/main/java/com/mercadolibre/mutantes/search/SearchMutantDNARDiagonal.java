@@ -1,6 +1,7 @@
 package com.mercadolibre.mutantes.search;
 
 import com.mercadolibre.mutantes.service.MutantIdentificationService;
+import com.mercadolibre.mutantes.validator.MatrixFormatValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -13,7 +14,7 @@ public class SearchMutantDNARDiagonal extends SearchMutantDNA {
 
     protected boolean searchCondition(String[][] dnaMatrix, int r, int c, int i) {
         logger.info("searchingRDiagonal");
-        super.verifyData(dnaMatrix[r+i][c+i]);
+        MatrixFormatValidator.verifyData(dnaMatrix[r+i][c+i]);
         return !(dnaMatrix[r][c].equals(dnaMatrix[r+i][c+i]));
     }
 

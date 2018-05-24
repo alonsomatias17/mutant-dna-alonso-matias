@@ -2,6 +2,7 @@ package com.mercadolibre.mutantes.service;
 
 import com.mercadolibre.mutantes.exception.InvalidDataException;
 import com.mercadolibre.mutantes.search.*;
+import com.mercadolibre.mutantes.validator.MatrixFormatValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ public class MutantIdentificationService {
 
     private static Logger logger = LogManager.getLogger("ExceptionHandlingController");
 
+    //TODO mover a archivo de propiedades
     public static final int DNA_SEQUENCE_LENGTH = 4;
     public static final int DNA_SEQUENCE_FOUND = 1;
     public static final int DNA_SEQUENCE_NOT_FOUND = 0;
@@ -22,15 +24,9 @@ public class MutantIdentificationService {
     private MatrixTransformerService matrixTransformerService;
 
     public boolean isMutant(String[] dna){
-        validateDnaMinLenght(dna.length);
+        MatrixFormatValidator.validateDnaMinLength(dna.length);
         String[][] dnaMatrix = matrixTransformerService.arrayToMatrixConverter(dna);
         return isMutant(dnaMatrix, dna.length);
-    }
-
-    private void validateDnaMinLenght(int length) {
-        if(length< DNA_SEQUENCE_LENGTH) {
-            throw new InvalidDataException("Invalid Argument leght: "+ length + "Must be: " + DNA_SEQUENCE_LENGTH + "or higher");
-        }
     }
 
     private boolean isMutant(String[][] dnaMatrix, int size) {
