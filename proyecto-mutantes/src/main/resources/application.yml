@@ -1,0 +1,6 @@
+server:
+  readTimeout: 10000
+  connectTimeout: 10000
+app:
+  dna:
+    sequence-legth: 4

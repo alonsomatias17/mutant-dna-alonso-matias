@@ -17,19 +17,31 @@ public class MutantIdentificationServiceTest {
 
     @Test
     public void isMutantTest(){
-        String[] dna = this.sampleArray();
+        String[] dna = this.sampleArrayMutant();
         boolean response = mutantIdentificationService.isMutant(dna);
         Assert.assertTrue(response);
     }
 
+    @Test
+    public void isNotMutantTest(){
+        String[] dna = this.sampleArrayNotMutant();
+        boolean response = mutantIdentificationService.isMutant(dna);
+        Assert.assertFalse(response);
+    }
+
     @Test(expected = InvalidDataException.class)
-    public void isMutantBadInputException(){
+    public void isMutantInvalidSizeException(){
         String[] dna = new String[MutantIdentificationService.DNA_SEQUENCE_LENGTH -1];
         mutantIdentificationService.isMutant(dna);
     }
 
-    private String[] sampleArray() {
+    private String[] sampleArrayMutant() {
         String[] dna = {"ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"};
+        return dna;
+    }
+
+    private String[] sampleArrayNotMutant() {
+        String[] dna = {"TTGCGA","CAGTAC","TTATGT","AGAAGG","CCTCTA","TCACTG"};
         return dna;
     }
 }

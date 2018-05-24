@@ -1,6 +1,5 @@
 package com.mercadolibre.mutantes.service;
 
-import com.mercadolibre.mutantes.exception.InvalidDataException;
 import com.mercadolibre.mutantes.search.*;
 import com.mercadolibre.mutantes.validator.MatrixFormatValidator;
 import org.apache.logging.log4j.LogManager;
