@@ -12,7 +12,6 @@ public class MutantIdentificationService {
 
     private static Logger logger = LogManager.getLogger("ExceptionHandlingController");
 
-    //TODO mover a archivo de propiedades
     public static final int DNA_SEQUENCE_LENGTH = 4;
     public static final int DNA_SEQUENCE_FOUND = 1;
     public static final int DNA_SEQUENCE_NOT_FOUND = 0;
@@ -30,13 +29,12 @@ public class MutantIdentificationService {
 
     private boolean isMutant(String[][] dnaMatrix, int size) {
         int mutantDNASequence = 0;
-        System.out.println(size);
         int r = 0;
         int c = 0;
         while(r<size && mutantDNASequence<2){
-            logger.info("###New row. Number: "+r);
+            logger.debug("New row: "+r);
             while (c<size  && mutantDNASequence<2){
-                logger.info("New column. Number: "+c);
+                logger.debug("New column: "+c);
                 mutantDNASequence += getMutantDNASequence(dnaMatrix, size, r, c);
                 c++;
             }
@@ -44,11 +42,11 @@ public class MutantIdentificationService {
             r++;
         }
         if(mutantDNASequence>1){
-            logger.info("###DNA match! Mutant found, inform Mr. Magneto!!!###");
+            logger.info("DNA match! Mutant found, inform Mr. Magneto!!!");
             return IS_MUTANT;
         }
         else{
-            logger.info("###DNA not match. Just another human###");
+            logger.info("DNA not match. Just another human");
             return IS_NOT_MUTANT;
         }
     }

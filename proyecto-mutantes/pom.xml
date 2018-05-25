@@ -6,7 +6,7 @@
 	<groupId>com.mercadolibre.mutantes</groupId>
 	<artifactId>proyecto-mutantes</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>proyecto-mutantes</name>
 	<description>Demo project for Spring Boot</description>
