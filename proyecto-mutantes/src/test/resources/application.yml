@@ -1,0 +1,6 @@
+server:
+  readTimeout: 10000
+  connectTimeout: 10000
+dna:
+  sequenceLength: 4
+  validData: "[ATGC]"
