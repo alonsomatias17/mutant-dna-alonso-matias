@@ -1,9 +1,13 @@
 package com.mercadolibre.mutantes.controller;
 
+import com.mercadolibre.mutantes.model.DNAStat;
 import com.mercadolibre.mutantes.service.MutantIdentificationService;
+import com.mercadolibre.mutantes.service.MutantStatService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Matchers;
 import org.mockito.Mockito;
+import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -16,6 +20,8 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
@@ -24,6 +30,10 @@ public class MutantControllerTest {
 
     @MockBean
     private MutantIdentificationService mutantIdentificationService;
+
+    @MockBean
+    private MutantStatService mutantStatService;
+
 
     @Autowired
     private MockMvc mockMvc;
@@ -43,7 +53,35 @@ public class MutantControllerTest {
         assertEquals(HttpStatus.OK.value(), response.getStatus());
     }
 
+    @Test
+    public void getJobsRecordsTest() throws Exception {
+        DNAStat dnaStat = getDNAStats();
+        String expected = getDNAStatsExpectedResponse();
+
+        Mockito.when(mutantStatService.getStats()).thenReturn(dnaStat);
+        RequestBuilder requestBuilder = MockMvcRequestBuilders
+                .get("/stats")
+                .accept(MediaType.APPLICATION_JSON);
+
+        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+        JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
+    }
+
+    private DNAStat getDNAStats() {
+        return new DNAStat(10, 20, 0.5F);
+    }
+
+    private String getDNAStatsExpectedResponse() {
+        return "{" +
+                "    \"count_mutant_dna\": 10," +
+                "    \"count_human_dna\": 20," +
+                "    \"ratio\": 0.5" +
+                "}";
+    }
+
     private String sampleDnaDTOJson() {
-        return "{ \"dna\": [\"ATGCGA\",\"CAGTGC\",\"TTATGT\",\"AGAAGG\",\"CCCCTA\",\"TCACTG\"]}";
+        return "{" +
+                "\"dna\": [\"ATGCGA\",\"CAGTGC\",\"TTATGT\",\"AGAAGG\",\"CCCCTA\",\"TCACTG\"]" +
+                "}";
     }
 }
