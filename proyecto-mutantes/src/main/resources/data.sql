@@ -1,0 +1,4 @@
+insert into DNA_SEQUENCE
+values(10001,'Mutant', 'AAAAAAATTTGGGGGG');
+insert into DNA_SEQUENCE
+values(10002,'Human', 'TGTGTGTGTGTGTGTGTGTGTG');

@@ -1,5 +1,6 @@
 package com.mercadolibre.mutantes.controller;
 
+import com.mercadolibre.mutantes.dto.DnaSequence;
 import com.mercadolibre.mutantes.model.DNAStat;
 import com.mercadolibre.mutantes.model.RequestObject;
 import com.mercadolibre.mutantes.service.MutantIdentificationService;
@@ -10,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 @RestController
 public class MutantController {
@@ -28,10 +32,11 @@ public class MutantController {
 
         logger.info("MutantController.mutantIdentifier. Request body: " + requestObject.print());
         if (mutantIdentificationService.isMutant( requestObject.getDna())) {
-            //TODO GUARDAR EN REPO
+            mutantStatService.update(new DnaSequence(10L, DnaSequence.DNA_TYPE_MUTANT, Arrays.toString(requestObject.getDna()) ));
             return ResponseEntity.status(HttpStatus.OK).build();
 
         }
+        mutantStatService.update(new DnaSequence(10L,DnaSequence.DNA_TYPE_HUMAN, Arrays.toString(requestObject.getDna()) ));
         return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }
 
