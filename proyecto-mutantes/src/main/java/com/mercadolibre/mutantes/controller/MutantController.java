@@ -1,6 +1,6 @@
 package com.mercadolibre.mutantes.controller;
 
-import com.mercadolibre.mutantes.dto.DnaSequence;
+import com.mercadolibre.mutantes.model.DnaSequence;
 import com.mercadolibre.mutantes.model.DNAStat;
 import com.mercadolibre.mutantes.model.RequestObject;
 import com.mercadolibre.mutantes.service.MutantIdentificationService;

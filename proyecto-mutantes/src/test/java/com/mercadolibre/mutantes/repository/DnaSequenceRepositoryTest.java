@@ -1,6 +1,6 @@
 package com.mercadolibre.mutantes.repository;
 
-import com.mercadolibre.mutantes.dto.DnaSequence;
+import com.mercadolibre.mutantes.model.DnaSequence;
 import com.mercadolibre.mutantes.model.DNAStat;
 import org.junit.Assert;
 import org.junit.Test;

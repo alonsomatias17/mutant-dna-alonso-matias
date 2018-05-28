@@ -1,7 +1,7 @@
 package com.mercadolibre.mutantes.service;
 
-import com.mercadolibre.mutantes.search.*;
-import com.mercadolibre.mutantes.validator.MatrixFormatValidator;
+import com.mercadolibre.mutantes.model.search.*;
+import com.mercadolibre.mutantes.validator.MutantMatrixValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,6 @@ public class MutantIdentificationService {
 
     private static Logger logger = LogManager.getLogger("ExceptionHandlingController");
 
-    public static final int DNA_SEQUENCE_LENGTH = 4;
     public static final int DNA_SEQUENCE_FOUND = 1;
     public static final int DNA_SEQUENCE_NOT_FOUND = 0;
     public static final boolean IS_MUTANT = true;
@@ -22,7 +21,7 @@ public class MutantIdentificationService {
     private MatrixTransformerService matrixTransformerService;
 
     public boolean isMutant(String[] dna){
-        MatrixFormatValidator.validateDnaMinLength(dna.length);
+        MutantMatrixValidator.validateDnaMatrixLength(dna);
         String[][] dnaMatrix = matrixTransformerService.arrayToMatrixConverter(dna);
         return isMutant(dnaMatrix, dna.length);
     }
@@ -31,9 +30,9 @@ public class MutantIdentificationService {
         int mutantDNASequence = 0;
         int r = 0;
         int c = 0;
-        while(r<size && mutantDNASequence<2){
+        while(r<size && mutantDNASequence < MutantMatrixValidator.DNA_SEQUENCES_NEEDED_AMOUNT){
             logger.debug("New row: "+r);
-            while (c<size  && mutantDNASequence<2){
+            while (c<size  && mutantDNASequence < MutantMatrixValidator.DNA_SEQUENCES_NEEDED_AMOUNT){
                 logger.debug("New column: "+c);
                 mutantDNASequence += getMutantDNASequence(dnaMatrix, size, r, c);
                 c++;
@@ -41,7 +40,11 @@ public class MutantIdentificationService {
             c=0;
             r++;
         }
-        if(mutantDNASequence>1){
+        return isMutant(mutantDNASequence);
+    }
+
+    private boolean isMutant(int mutantDNASequence) {
+        if(mutantDNASequence >= MutantMatrixValidator.DNA_SEQUENCES_NEEDED_AMOUNT){
             logger.info("DNA match! Mutant found, inform Mr. Magneto!!!");
             return IS_MUTANT;
         }
@@ -76,7 +79,7 @@ public class MutantIdentificationService {
 
     private int searchForMutantDNASequence(String[][] dnaMatrix, int r, int c, SearchMutantDNA searchMutantDNA) {
     if(searchMutantDNA.search(dnaMatrix, r, c)){
-        logger.info("#########DNA match found!#########");
+        logger.info("DNA match. Mutant dna sequence found!");
         return DNA_SEQUENCE_FOUND;
     }
     return DNA_SEQUENCE_NOT_FOUND;

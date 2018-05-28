@@ -1,6 +1,6 @@
 package com.mercadolibre.mutantes.dao;
 
-import com.mercadolibre.mutantes.dto.DnaSequence;
+import com.mercadolibre.mutantes.model.DnaSequence;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
