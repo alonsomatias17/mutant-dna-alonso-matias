@@ -1,4 +1,13 @@
 DROP TABLE IF EXISTS DNA_SEQUENCE;
-CREATE TABLE DNA_SEQUENCE(ID BIGINT PRIMARY KEY AUTO_INCREMENT,
-                  TYPE VARCHAR(30),
-                  DNA varchar(255));
+CREATE TABLE DNA_SEQUENCE(
+                  ID INT NOT NULL AUTO_INCREMENT,
+                  TYPE VARCHAR(30) NOT NULL,
+                  DNA varchar(255) NOT NULL,
+                  PRIMARY KEY (id));
+--DROP TABLE IF EXISTS dog;
+--CREATE TABLE dog (
+--  id INT NOT NULL AUTO_INCREMENT,
+--  name VARCHAR(100) NOT NULL,
+--  rescued DATE NOT NULL,
+--  vaccinated TINYINT(1) NOT NULL,
+--  PRIMARY KEY (id));

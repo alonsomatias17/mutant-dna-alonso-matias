@@ -1,10 +1,10 @@
 package com.mercadolibre.mutantes.controller;
 
-import com.mercadolibre.mutantes.model.DnaSequence;
 import com.mercadolibre.mutantes.model.DNAStat;
+import com.mercadolibre.mutantes.model.DnaSequence;
 import com.mercadolibre.mutantes.model.RequestObject;
+import com.mercadolibre.mutantes.service.MutantDnaService;
 import com.mercadolibre.mutantes.service.MutantIdentificationService;
-import com.mercadolibre.mutantes.service.MutantStatService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.logging.log4j.LogManager;
@@ -23,10 +23,10 @@ public class MutantController {
     private static Logger logger = LogManager.getLogger("MutantController");
 
     @Autowired
-    private MutantStatService mutantStatService;
+    private MutantIdentificationService mutantIdentificationService;
 
     @Autowired
-    private MutantIdentificationService mutantIdentificationService;
+    private MutantDnaService dnaService;
 
     @RequestMapping(value = "/mutant",  method = RequestMethod.POST)
     @ResponseBody
@@ -34,11 +34,10 @@ public class MutantController {
     public ResponseEntity<String> mutantIdentifier(@RequestBody RequestObject requestObject) {
         logger.info("MutantController.mutantIdentifier. Request body: " + requestObject.print());
         if (mutantIdentificationService.isMutant( requestObject.getDna())) {
-            mutantStatService.update(new DnaSequence(10L, DnaSequence.DNA_TYPE_MUTANT, Arrays.toString(requestObject.getDna()) ));
+            dnaService.addADnaSequence(DnaSequence.DNA_TYPE_MUTANT, Arrays.toString(requestObject.getDna()));
             return ResponseEntity.status(HttpStatus.OK).build();
-
         }
-        mutantStatService.update(new DnaSequence(10L,DnaSequence.DNA_TYPE_HUMAN, Arrays.toString(requestObject.getDna()) ));
+        dnaService.addADnaSequence(DnaSequence.DNA_TYPE_HUMAN, Arrays.toString(requestObject.getDna()));
         return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }
 
@@ -46,6 +45,6 @@ public class MutantController {
     @ApiOperation(value = "Shows stats for mutnt and human dna")
     public DNAStat getDnaStats(){
         logger.info("MutantController.getDnaStats. Getting stats");
-        return mutantStatService.getDnaStats();
+        return dnaService.getDnaStats();
     }
 }

@@ -2,8 +2,8 @@ package com.mercadolibre.mutantes.controller;
 
 import com.mercadolibre.mutantes.exception.BadDataException;
 import com.mercadolibre.mutantes.exception.InvalidDataException;
+import com.mercadolibre.mutantes.service.MutantDnaService;
 import com.mercadolibre.mutantes.service.MutantIdentificationService;
-import com.mercadolibre.mutantes.service.MutantStatService;
 import com.mercadolibre.mutantes.validator.MutantMatrixValidator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +32,7 @@ public class ExceptionHandlingControllerTest {
     private MutantIdentificationService identificationService;
 
     @MockBean
-    private MutantStatService mutantStatService;
+    private MutantDnaService dnaService;
 
     @Autowired
     private MockMvc mockMvc;

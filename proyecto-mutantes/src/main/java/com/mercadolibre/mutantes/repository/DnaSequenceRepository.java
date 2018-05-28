@@ -18,7 +18,7 @@ public class DnaSequenceRepository {
     private static Logger logger = LogManager.getLogger("DnaSequenceRepository");
 
     @Autowired
-    private JdbcTemplate jtm;
+        private JdbcTemplate jtm;
 
     public List<DnaSequence> findAll() {
         String sql = "SELECT * FROM DNA_SEQUENCE";

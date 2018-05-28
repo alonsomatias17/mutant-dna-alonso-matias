@@ -4,7 +4,20 @@ server:
 dna:
   sequenceLength: 4
   validData: "[ATGC]"
+#spring:
+#  h2:
+#    console:
+#      enabled: true
+
 spring:
-  h2:
-    console:
-      enabled: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/mutant?useSSL=false
+    username: root
+    password: escorpio
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
