@@ -4,16 +4,12 @@ server:
 dna:
   sequenceLength: 4
   validData: "[ATGC]"
-#spring:
-#  h2:
-#    console:
-#      enabled: true
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/mutant?useSSL=false
+    url: jdbc:mysql://rds-mysql-dnamutants.c7zjrazzanj8.sa-east-1.rds.amazonaws.com:3306/mutantDB?user=root&password=rootroot
     username: root
-    password: escorpio
+    password: rootroot
     driver-class-name: com.mysql.jdbc.Driver
   jpa:
     hibernate:

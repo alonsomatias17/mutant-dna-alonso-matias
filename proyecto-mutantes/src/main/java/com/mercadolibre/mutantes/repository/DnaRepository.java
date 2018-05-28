@@ -28,7 +28,7 @@ public class DnaRepository {
 
     public void addADnaSequence(String type, String dna){
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-        jdbcTemplate.update("INSERT INTO dna_sequence(type, dna)VALUES(?,?)", type, dna);
+        jdbcTemplate.update("INSERT INTO DNA_SEQUENCE(type, dna)VALUES(?,?)", type, dna);
         logger.info("Record successfully saved in DataBase");
     }
 
