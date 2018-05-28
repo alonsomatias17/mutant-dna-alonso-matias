@@ -5,6 +5,8 @@ import com.mercadolibre.mutantes.model.DNAStat;
 import com.mercadolibre.mutantes.model.RequestObject;
 import com.mercadolibre.mutantes.service.MutantIdentificationService;
 import com.mercadolibre.mutantes.service.MutantStatService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Arrays;
 
 @RestController
+@Api(value="Stats", description="Operations pertaining to market data jobs")
 public class MutantController {
 
     private static Logger logger = LogManager.getLogger("MutantController");
@@ -27,6 +30,7 @@ public class MutantController {
 
     @RequestMapping(value = "/mutant",  method = RequestMethod.POST)
     @ResponseBody
+    @ApiOperation(value = "Search for mutant dna in a certain sequence sequence, then save the result")
     public ResponseEntity<String> mutantIdentifier(@RequestBody RequestObject requestObject) {
         logger.info("MutantController.mutantIdentifier. Request body: " + requestObject.print());
         if (mutantIdentificationService.isMutant( requestObject.getDna())) {
@@ -39,6 +43,7 @@ public class MutantController {
     }
 
     @RequestMapping(value = "/stats", method = RequestMethod.GET)
+    @ApiOperation(value = "Shows stats for mutnt and human dna")
     public DNAStat getDnaStats(){
         logger.info("MutantController.getDnaStats. Getting stats");
         return mutantStatService.getDnaStats();
