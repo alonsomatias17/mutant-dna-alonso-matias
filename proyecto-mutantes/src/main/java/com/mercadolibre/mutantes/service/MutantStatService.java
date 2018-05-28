@@ -18,12 +18,18 @@ public class MutantStatService {
     @Autowired
     private DnaSequenceRepository dnaSequenceRepository;
 
-    public DNAStat getStats() {
+    public DNAStat getAll() {
         List<DnaSequence> dnaSequences = dnaSequenceRepository.findAll();
         for(DnaSequence dnaSequence : dnaSequences){
             logger.info("MutantController.mutantIdentifier. Request body: " + dnaSequence.print());
         }
         return new DNAStat(10, 20, 0.5F);
+    }
+
+    public DNAStat getStats() {
+        DNAStat dnaStat = dnaSequenceRepository.getStats();
+        logger.info("MutantController.mutantIdentifier. Request body: " + dnaStat.print());
+        return dnaStat;
     }
 
     public void update(DnaSequence dnaSequence){

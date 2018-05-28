@@ -4,3 +4,7 @@ server:
 dna:
   sequenceLength: 4
   validData: "[ATGC]"
+spring:
+  h2:
+    console:
+      enabled: true
