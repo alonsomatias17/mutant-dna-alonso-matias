@@ -21,7 +21,7 @@ public class DnaSequenceRepositoryTest {
     @Test
     public void getStatsTest(){
         DNAStat dnaStat = new DNAStat(2, 1, 0.6F);
-        DNAStat dnaStatResponse = dnaSequenceRepository.getStats();
+        DNAStat dnaStatResponse = dnaSequenceRepository.getDnaStats();
         Assert.assertEquals(dnaStat.getCount_human_dna(), dnaStatResponse.getCount_human_dna());
         Assert.assertEquals(dnaStat.getCount_mutant_dna(), dnaStatResponse.getCount_mutant_dna());
         Assert.assertEquals(dnaStat.getRatio(), dnaStatResponse.getRatio(), 0.1F);

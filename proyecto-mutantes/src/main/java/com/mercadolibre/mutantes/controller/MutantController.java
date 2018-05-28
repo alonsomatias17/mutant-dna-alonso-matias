@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 @RestController
@@ -29,7 +28,6 @@ public class MutantController {
     @RequestMapping(value = "/mutant",  method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<String> mutantIdentifier(@RequestBody RequestObject requestObject) {
-
         logger.info("MutantController.mutantIdentifier. Request body: " + requestObject.print());
         if (mutantIdentificationService.isMutant( requestObject.getDna())) {
             mutantStatService.update(new DnaSequence(10L, DnaSequence.DNA_TYPE_MUTANT, Arrays.toString(requestObject.getDna()) ));
@@ -41,10 +39,8 @@ public class MutantController {
     }
 
     @RequestMapping(value = "/stats", method = RequestMethod.GET)
-    public DNAStat getDNAStats(){
-        logger.info("MutantController.getDNAStats. Getting stats");
-        DNAStat dnaStat = mutantStatService.getStats();
-        logger.info("Stats: " + dnaStat.toString());
-        return dnaStat;
+    public DNAStat getDnaStats(){
+        logger.info("MutantController.getDnaStats. Getting stats");
+        return mutantStatService.getDnaStats();
     }
 }

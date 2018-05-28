@@ -5,7 +5,6 @@ import com.mercadolibre.mutantes.service.MutantIdentificationService;
 import com.mercadolibre.mutantes.service.MutantStatService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
 import org.mockito.Mockito;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +18,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -58,7 +55,7 @@ public class MutantControllerTest {
         DNAStat dnaStat = getDNAStats();
         String expected = getDNAStatsExpectedResponse();
 
-        Mockito.when(mutantStatService.getStats()).thenReturn(dnaStat);
+        Mockito.when(mutantStatService.getDnaStats()).thenReturn(dnaStat);
         RequestBuilder requestBuilder = MockMvcRequestBuilders
                 .get("/stats")
                 .accept(MediaType.APPLICATION_JSON);

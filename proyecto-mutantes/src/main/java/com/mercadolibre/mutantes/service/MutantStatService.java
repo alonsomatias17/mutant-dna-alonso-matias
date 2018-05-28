@@ -6,9 +6,9 @@ import com.mercadolibre.mutantes.repository.DnaSequenceRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class MutantStatService {
@@ -18,20 +18,14 @@ public class MutantStatService {
     @Autowired
     private DnaSequenceRepository dnaSequenceRepository;
 
-    public DNAStat getAll() {
-        List<DnaSequence> dnaSequences = dnaSequenceRepository.findAll();
-        for(DnaSequence dnaSequence : dnaSequences){
-            logger.info("MutantController.mutantIdentifier. Request body: " + dnaSequence.print());
-        }
-        return new DNAStat(10, 20, 0.5F);
-    }
-
-    public DNAStat getStats() {
-        DNAStat dnaStat = dnaSequenceRepository.getStats();
-        logger.info("MutantController.mutantIdentifier. Request body: " + dnaStat.print());
+    @Cacheable("stats")
+    public DNAStat getDnaStats() {
+        DNAStat dnaStat = dnaSequenceRepository.getDnaStats();
+        logger.info("MutantStatService.getDnaStats. Body: " + dnaStat.print());
         return dnaStat;
     }
 
+    @CacheEvict(value="stats", allEntries=true)
     public void update(DnaSequence dnaSequence){
         dnaSequenceRepository.update(dnaSequence);
     }

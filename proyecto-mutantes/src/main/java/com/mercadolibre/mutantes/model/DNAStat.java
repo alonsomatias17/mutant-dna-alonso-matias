@@ -15,9 +15,8 @@ public class DNAStat {
     }
 
     public String print(){
-        return "Mutants: " + this.count_mutant_dna;
+        return "Mutants: " + this.count_mutant_dna + " Humans: " + this.getCount_human_dna() + " Ratio: " + this.getRatio();
     }
-
 
     public int getCount_mutant_dna() {
         return count_mutant_dna;
