@@ -1,4 +1,4 @@
-package com.mercadolibre.mutantes.dto;
+package com.mercadolibre.mutantes.model;
 
 public class DnaSequence {
 

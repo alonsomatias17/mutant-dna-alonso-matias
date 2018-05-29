@@ -1,6 +1,6 @@
 package com.mercadolibre.mutantes.service;
 
-import com.mercadolibre.mutantes.dto.DnaSequence;
+import com.mercadolibre.mutantes.model.DnaSequence;
 import com.mercadolibre.mutantes.model.DNAStat;
 import com.mercadolibre.mutantes.repository.DnaSequenceRepository;
 import org.apache.logging.log4j.LogManager;
@@ -26,7 +26,7 @@ public class MutantStatService {
     }
 
     @CacheEvict(value="stats", allEntries=true)
-    public void update(DnaSequence dnaSequence){
-        dnaSequenceRepository.update(dnaSequence);
+    public void update(String type, String dna) {
+        dnaSequenceRepository.update(type, dna);
     }
 }

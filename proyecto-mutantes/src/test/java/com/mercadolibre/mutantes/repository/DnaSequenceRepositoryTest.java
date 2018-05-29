@@ -1,6 +1,6 @@
 package com.mercadolibre.mutantes.repository;
 
-import com.mercadolibre.mutantes.dto.DnaSequence;
+import com.mercadolibre.mutantes.model.DnaSequence;
 import com.mercadolibre.mutantes.model.DNAStat;
 import org.junit.Assert;
 import org.junit.Test;
@@ -30,8 +30,7 @@ public class DnaSequenceRepositoryTest {
     @Test
     public void updateTest(){
         List<DnaSequence> dnaSequencesBefore = dnaSequenceRepository.findAll();
-        DnaSequence dnaSequence = new DnaSequence(10101010L, DnaSequence.DNA_TYPE_MUTANT, "AAAADDFFGGG");
-        dnaSequenceRepository.update(dnaSequence);
+        dnaSequenceRepository.update(DnaSequence.DNA_TYPE_MUTANT, "AAAADDFFGGG");
         List<DnaSequence> dnaSequencesAfter = dnaSequenceRepository.findAll();
         
         Assert.assertEquals(dnaSequencesBefore.size()+1, dnaSequencesAfter.size());

@@ -2,7 +2,7 @@ package com.mercadolibre.mutantes.repository;
 
 import com.mercadolibre.mutantes.dao.DnaSequenceRowMapper;
 import com.mercadolibre.mutantes.dao.DnaStatRowMapper;
-import com.mercadolibre.mutantes.dto.DnaSequence;
+import com.mercadolibre.mutantes.model.DnaSequence;
 import com.mercadolibre.mutantes.model.DNAStat;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -34,8 +34,8 @@ public class DnaSequenceRepository {
         return dnaStats.get(0);
     }
 
-    public void update(DnaSequence dnaSequence) {
-        String sql = "insert into DNA_SEQUENCE values("+ dnaSequence.getId()+",'"+ dnaSequence.getType()+"','"+ dnaSequence.getDna()+"')";
+    public void update(String type, String dna) {
+        String sql = "insert into DNA_SEQUENCE(type, dna) values('"+ type+"','"+ dna+"')";
         jtm.update(sql);
         logger.info("DnaSequenceRepository.update. SuccessfulRequest. Query: "+sql);
     }
