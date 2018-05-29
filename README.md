@@ -1,9 +1,5 @@
 # ADN Mutante Matias-Alonso
-=====
 Projecto de evaluacion de adn mutante
-
-
-=====
 
 # CÓMO PROBAR PROBAR LA APLICACIÓN
 
