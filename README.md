@@ -25,3 +25,4 @@ Projecto de evaluacion de adn mutante
     
 # CONSIDERACIONES 
 A pesar que la implementacion local usa una DB en AWS, la version hosteada en AWS no. AWS presentaba diferentes probematicas con las propiedades que se necesitan para la conexión a la DB (que andaban perfertamente local), debido a que era un tema netamente de configuración, y por complicaciones de tiempo, implemente una base in memory en la version hosteada en AWS.
+Las secuencias con nodos en común son consideradas válidas. (Requerimiento consultado y no respondido)
