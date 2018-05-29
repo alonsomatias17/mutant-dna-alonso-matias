@@ -1,7 +1,6 @@
 package com.mercadolibre.mutantes.service;
 
 import com.mercadolibre.mutantes.exception.InvalidDataException;
-import com.mercadolibre.mutantes.validator.MutantMatrixValidator;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
