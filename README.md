@@ -3,18 +3,17 @@ Projecto de evaluacion de adn mutante
 
 # CÓMO PROBAR PROBAR LA APLICACIÓN
 
-- Local: run MutantProjectApplication.java
-    Abrir el cliente REST "Postman" para realizar las pruebas:
-      Para probar request get: 
-                end point: http://localhost:8080/stats
-                Apesar de ser una ejecucion local, la conexión es con una base de datos hosteada en AWS.
-      Para probar request post: 
-                end point: http://localhost:8080/mutant
-                body: {"dna": ["ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"]}
-                header: 
-                    key= Content-Type
-                    value= application/json
-                Apesar de ser una ejecucion local, la conexión es con una base de datos hosteada en AWS.
+# Local: run MutantProjectApplication.java
+    -Abrir el cliente REST "Postman" para realizar las pruebas:
+    - Para probar request get: 
+                * end point: http://localhost:8080/stats
+                * Apesar de ser una ejecucion local, la conexión es con una base de datos hosteada en AWS.
+    - Para probar request post: 
+                * end point: http://localhost:8080/mutant
+                * body: {"dna": ["ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"]}
+                *header: key= Content-Type value= application/json
+
+Apesar de ser una ejecucion local, la conexión es con una base de datos hosteada en AWS.
  
 - Servidor AWS:
     La API esta hosteada en AWS. en: http://mutant-dna-searcher.us-east-2.elasticbeanstalk.com
