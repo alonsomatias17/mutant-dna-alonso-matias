@@ -1,4 +1,4 @@
-package com.mercadolibre.mutantes.search;
+package com.mercadolibre.mutantes.model.search;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

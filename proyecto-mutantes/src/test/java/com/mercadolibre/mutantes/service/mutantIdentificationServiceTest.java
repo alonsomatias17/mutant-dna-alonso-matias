@@ -1,7 +1,7 @@
 package com.mercadolibre.mutantes.service;
 
 import com.mercadolibre.mutantes.exception.InvalidDataException;
-import com.mercadolibre.mutantes.validator.MatrixFormatValidator;
+import com.mercadolibre.mutantes.validator.MutantMatrixValidator;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +32,7 @@ public class MutantIdentificationServiceTest {
 
     @Test(expected = InvalidDataException.class)
     public void isMutantInvalidSizeException(){
-        String[] dna = new String[MatrixFormatValidator.DNA_SEQUENCE_LENGTH -1];
+        String[] dna = this.sampleInvalidSizeArray();
         mutantIdentificationService.isMutant(dna);
     }
 
@@ -43,6 +43,11 @@ public class MutantIdentificationServiceTest {
 
     private String[] sampleArrayNotMutant() {
         String[] dna = {"TTGCGA","CAGTAC","TTATGT","AGAAGG","CCTCTA","TCACTG"};
+        return dna;
+    }
+
+    private String[] sampleInvalidSizeArray() {
+        String[] dna = {"TTG","CAG","TTA"};
         return dna;
     }
 }
