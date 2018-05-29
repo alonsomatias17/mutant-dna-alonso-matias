@@ -6,14 +6,14 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class ProyectoMutantesApplication extends SpringBootServletInitializer {
+public class MutantProjectApplication extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(ProyectoMutantesApplication.class);
+		return application.sources(MutantProjectApplication.class);
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProyectoMutantesApplication.class, args);
+		SpringApplication.run(MutantProjectApplication.class, args);
 	}
 }
