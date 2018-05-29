@@ -13,7 +13,14 @@ public class DnaStatRowMapper implements RowMapper<DNAStat> {
         DNAStat dnaStat = new DNAStat();
         dnaStat.setCount_mutant_dna(rs.getInt("mutant"));
         dnaStat.setCount_human_dna(rs.getInt("human"));
-        dnaStat.setRatio((float)dnaStat.getCount_mutant_dna()/(dnaStat.getCount_human_dna()+dnaStat.getCount_mutant_dna()));
+        dnaStat.setRatio(getRatio(dnaStat));
         return dnaStat;
+    }
+
+    private float getRatio(DNAStat dnaStat) {
+        if( (dnaStat.getCount_human_dna()+dnaStat.getCount_mutant_dna()) == 0 )
+            return 0;
+        else
+            return (float)dnaStat.getCount_mutant_dna()/(dnaStat.getCount_human_dna()+dnaStat.getCount_mutant_dna());
     }
 }

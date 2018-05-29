@@ -13,7 +13,6 @@ public class ProyectoMutantesApplication extends SpringBootServletInitializer {
 		return application.sources(ProyectoMutantesApplication.class);
 	}
 
-
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoMutantesApplication.class, args);
 	}
