@@ -1,9 +1,7 @@
 # ADN Mutante Matias-Alonso
 Projecto de evaluacion de adn mutante
 
-# CÓMO PROBAR PROBAR LA APLICACIÓN
-
-* Local: run MutantProjectApplication.java
+# Cómo probar la aplicación Local: run MutantProjectApplication.java
     -Abrir el cliente REST "Postman" para realizar las pruebas:
     - Para probar request get: 
                 * end point: http://localhost:8080/stats
