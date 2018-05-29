@@ -1,5 +1,5 @@
 package com.mercadolibre.mutantes.service;
 
-public interface MutantIdentificationService {
+public interface MutantIdentificatiorService {
     boolean isMutant(String[] dna);
 }

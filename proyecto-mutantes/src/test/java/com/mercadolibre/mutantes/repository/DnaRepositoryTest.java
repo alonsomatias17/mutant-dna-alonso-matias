@@ -18,14 +18,12 @@ public class DnaRepositoryTest {
 
     @Test
     public void addADnaSequence() {
-        //TODO COMPLETAR
         dnaRepository.addADnaSequence(DnaSequence.DNA_TYPE_MUTANT, "AAAAAAAAAAAAA");
     }
 
     @Test
     public void getDnaStats() {
         DNAStat dnaStat = dnaRepository.getDnaStats();
-        System.out.println(dnaStat.print());
         Assert.assertNotNull(dnaStat);
     }
 }
