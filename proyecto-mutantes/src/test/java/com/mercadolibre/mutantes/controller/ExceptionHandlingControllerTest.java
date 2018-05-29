@@ -3,7 +3,7 @@ package com.mercadolibre.mutantes.controller;
 import com.mercadolibre.mutantes.exception.BadDataException;
 import com.mercadolibre.mutantes.exception.InvalidDataException;
 import com.mercadolibre.mutantes.service.MutantDnaService;
-import com.mercadolibre.mutantes.service.MutantIdentificationService;
+import com.mercadolibre.mutantes.service.MutantIdentificatiorService;
 import com.mercadolibre.mutantes.validator.MutantMatrixValidator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,7 +29,7 @@ import static org.junit.Assert.assertEquals;
 public class ExceptionHandlingControllerTest {
 
     @MockBean
-    private MutantIdentificationService identificationService;
+    private MutantIdentificatiorService identificationService;
 
     @MockBean
     private MutantDnaService dnaService;

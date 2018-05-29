@@ -10,29 +10,29 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest()
-public class MutantIdentificationServiceTest {
+public class MutantIdentificatiorServiceTest {
 
     @Autowired
-    private MutantIdentificationService mutantIdentificationService;
+    private MutantIdentificatiorService mutantIdentificatiorService;
 
     @Test
     public void isMutantTest(){
         String[] dna = this.sampleArrayMutant();
-        boolean response = mutantIdentificationService.isMutant(dna);
+        boolean response = mutantIdentificatiorService.isMutant(dna);
         Assert.assertTrue(response);
     }
 
     @Test
     public void isNotMutantTest(){
         String[] dna = this.sampleArrayNotMutant();
-        boolean response = mutantIdentificationService.isMutant(dna);
+        boolean response = mutantIdentificatiorService.isMutant(dna);
         Assert.assertFalse(response);
     }
 
     @Test(expected = InvalidDataException.class)
     public void isMutantInvalidSizeException(){
         String[] dna = this.sampleInvalidSizeArray();
-        mutantIdentificationService.isMutant(dna);
+        mutantIdentificatiorService.isMutant(dna);
     }
 
     private String[] sampleArrayMutant() {

@@ -2,7 +2,7 @@ package com.mercadolibre.mutantes.controller;
 
 import com.mercadolibre.mutantes.model.DNAStat;
 import com.mercadolibre.mutantes.service.MutantDnaService;
-import com.mercadolibre.mutantes.service.MutantIdentificationService;
+import com.mercadolibre.mutantes.service.MutantIdentificatiorService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -26,7 +26,7 @@ import static org.junit.Assert.assertEquals;
 public class MutantControllerTest {
 
     @MockBean
-    private MutantIdentificationService mutantIdentificationService;
+    private MutantIdentificatiorService mutantIdentificatiorService;
 
     @MockBean
     private MutantDnaService dnaService;
@@ -37,7 +37,7 @@ public class MutantControllerTest {
     @Test
     public void mutantIdentifierTest() throws Exception {
         final String dnaDTOJson = sampleDnaDTOJson();
-        Mockito.when(mutantIdentificationService.isMutant(Mockito.any(String[].class))).thenReturn(true);
+        Mockito.when(mutantIdentificatiorService.isMutant(Mockito.any(String[].class))).thenReturn(true);
 
         RequestBuilder requestBuilder = MockMvcRequestBuilders
                 .post("/mutant")

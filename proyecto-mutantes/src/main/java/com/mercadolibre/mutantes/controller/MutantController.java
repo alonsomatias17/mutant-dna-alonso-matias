@@ -4,7 +4,7 @@ import com.mercadolibre.mutantes.model.DNAStat;
 import com.mercadolibre.mutantes.model.DnaSequence;
 import com.mercadolibre.mutantes.model.RequestObject;
 import com.mercadolibre.mutantes.service.MutantDnaService;
-import com.mercadolibre.mutantes.service.MutantIdentificationService;
+import com.mercadolibre.mutantes.service.MutantIdentificatiorService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.logging.log4j.LogManager;
@@ -23,7 +23,7 @@ public class MutantController {
     private static Logger logger = LogManager.getLogger("MutantController");
 
     @Autowired
-    private MutantIdentificationService mutantIdentificationService;
+    private MutantIdentificatiorService mutantIdentificatiorService;
 
     @Autowired
     private MutantDnaService dnaService;
@@ -33,7 +33,7 @@ public class MutantController {
     @ApiOperation(value = "Search for mutant dna in a certain sequence sequence, then save the result")
     public ResponseEntity<String> mutantIdentifier(@RequestBody RequestObject requestObject) {
         logger.info("MutantController.mutantIdentifier. Request body: " + requestObject.print());
-        if (mutantIdentificationService.isMutant( requestObject.getDna())) {
+        if (mutantIdentificatiorService.isMutant( requestObject.getDna())) {
             dnaService.addADnaSequence(DnaSequence.DNA_TYPE_MUTANT, Arrays.toString(requestObject.getDna()));
             return ResponseEntity.status(HttpStatus.OK).build();
         }
